@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: dino-runner-api
+    env: node
+    root: server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        value: https://dino-runner.netlify.app
+    autoDeploy: true
+    healthCheckPath: /health

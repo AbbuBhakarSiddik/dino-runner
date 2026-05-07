@@ -1,0 +1,4 @@
+Add your game screenshots here:
+- game-play.png (1280x720)
+- leaderboard.png (1280x720)
+- profile.png (1280x720)

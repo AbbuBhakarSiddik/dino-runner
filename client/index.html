@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>🦕 Dino Runner - Classic Dinosaur Game Online</title>
+  <meta name="title" content="Dino Runner - Classic Dinosaur Game Online">
+  <meta name="description"
+    content="Play the classic dinosaur runner game! Works offline, compete with friends on the global leaderboard. How long can you survive?">
+  <meta name="keywords" content="dinosaur game, chrome dino, offline game, runner game, dinosaur runner">
+  <meta name="author" content="Dino Runner">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dino-runner.netlify.app/">
+  <meta property="og:title" content="Dino Runner - Classic Dinosaur Game">
+  <meta property="og:description"
+    content="Play the classic dinosaur runner game! Works offline, compete with friends on the global leaderboard.">
+  <meta property="og:image" content="/screenshots/game-play.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://dino-runner.netlify.app/">
+  <meta property="twitter:title" content="Dino Runner - Classic Dinosaur Game">
+  <meta property="twitter:description"
+    content="Play the classic dinosaur runner game! Works offline, compete with friends on the global leaderboard.">
+  <meta property="twitter:image" content="/screenshots/game-play.png">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3498db">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Dino Runner">
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+  <meta name="msapplication-TileColor" content="#3498db">
+  <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    body {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    document.body.classList.add('loaded');
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('🦕 Service Worker registered:', registration.scope);
+          })
+          .catch(error => {
+            console.log('🦕 Service Worker registration failed (this is ok in dev):', error.message);
+          });
+      });
+    }
+  </script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
